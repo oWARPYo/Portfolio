@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Scroll Thumb</title>
+  <style>
+    /* Masque la scrollbar */
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    /* Style pour le contenu (texte pour tester le scroll) */
+    body {
+      font-family: Arial, sans-serif;
+      height: 200vh; /* Contenu très haut pour test */
+    }
+    
+    /* Thumb personnalisé */
+    #scrollThumb {
+      position: fixed;
+      right: 10px;
+      top: 0;
+      width: 10px;
+      height: 50px;
+      background-color: #00AAFF;
+      border-radius: 5px;
+      opacity: 0.8;
+      z-index: 9999;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    /* Changement de couleur au hover */
+    #scrollThumb:hover {
+      background-color: #005F9E;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scrollThumb"></div>
+  <img src="https://i.pinimg.com/originals/49/48/72/494872adcf51b55e610b7d3d13e50fdc.jpg" class="test"></img>
+
+
+  <script>
+    const scrollThumb = document.getElementById('scrollThumb');
+    const thumbHeight = 50;
+    let isDragging = false;
+    let startY;
+    let startScrollY;
+    let targetScrollPosition = window.scrollY;
+    let isScrolling = false;
+
+    // Fonction pour mettre à jour la position du thumb en fonction du scroll
+    function updateScrollThumb() {
+      const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPosition = window.scrollY;
+      const thumbPosition = (scrollPosition / pageHeight) * (window.innerHeight - thumbHeight);
+      scrollThumb.style.top = `${thumbPosition}px`;
+    }
+
+    // Fonction de défilement lissé
+    function smoothScroll() {
+      if (!isScrolling) return;
+      const currentScroll = window.scrollY;
+      const distance = targetScrollPosition - currentScroll;
+      window.scrollTo(0, currentScroll + distance * 0.1); // Ajuste la vitesse avec un multiplicateur
+
+      if (Math.abs(distance) > 0.5) {
+        requestAnimationFrame(smoothScroll);
+      } else {
+        window.scrollTo(0, targetScrollPosition); // Assure la position finale exacte
+        isScrolling = false;
+      }
+      updateScrollThumb();
+    }
+
+    // Écouteur de l'événement wheel pour un scroll lissé
+    window.addEventListener('wheel', (event) => {
+      targetScrollPosition += event.deltaY;
+      targetScrollPosition = Math.max(0, Math.min(targetScrollPosition, document.documentElement.scrollHeight - window.innerHeight));
+      
+      if (!isScrolling) {
+        isScrolling = true;
+        smoothScroll();
+      }
+    });
+
+    // Gère le glissement du thumb
+    scrollThumb.addEventListener('mousedown', (event) => {
+      isDragging = true;
+      startY = event.clientY;
+      startScrollY = window.scrollY;
+      document.body.style.userSelect = 'none';
+      isScrolling = false; // Arrête le scroll lissé pendant le glissement du thumb
+    });
+
+    document.addEventListener('mousemove', (event) => {
+      if (isDragging) {
+        const deltaY = event.clientY - startY;
+        const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollAmount = (deltaY / (window.innerHeight - thumbHeight)) * pageHeight;
+        window.scrollTo(0, startScrollY + scrollAmount);
+        targetScrollPosition = window.scrollY; // Met à jour la position cible en conséquence
+      }
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      document.body.style.userSelect = '';
+      targetScrollPosition = window.scrollY; // Fixe la position cible après le glissement du thumb
+    });
+
+    // Synchronise le thumb avec le scroll
+    window.addEventListener('scroll', updateScrollThumb);
+
+    // Initialise la position du thumb au chargement de la page
+    updateScrollThumb();
+  </script>
+</body>
+</html>

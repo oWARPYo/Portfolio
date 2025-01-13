@@ -1,0 +1,148 @@
+/* Alignement de la navbar et des éléments */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  z-index: 1000;
+  padding: 35px 0px;
+  transition: 0.33s;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+  border-bottom-right-radius: 35px;
+  border-bottom-left-radius: 35px;
+}
+
+/* Style pour les éléments de la liste */
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly; /* Distribue les éléments de manière égale */
+  align-items: center;
+  transition: 0.33s;
+}
+
+.navbar ul li {
+  flex-grow: 1;
+  text-align: center; /* Centrer le texte dans chaque élément */
+  transition: 0.33s;
+
+}
+
+.navbar ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 22px;
+  font-family: 'kayak-sans';
+  border-radius: 35px;
+  padding: 20px 0 20px 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.33s;
+}
+
+/* Logo spécifique pour centrer */
+#logo{
+  filter: invert(1);
+  padding: 0 20px 0 20px;
+  height: 70px;
+  width: 70px;
+  transition: 0.33s;
+}
+
+#theme-icon{
+  filter: invert(1);
+  height: 35px;
+  width: 35px;
+  transition: 0.33s;
+}
+
+/* Fonctionnalité de disparition et réapparition de la navbar */
+.hidden {
+  top: -100px;
+}
+
+.visible {
+  top: 0;
+  transition: top 0.3s ease-in-out;
+}
+
+/* Styles de la liste déroulante */
+.dropdown {
+  position: relative; /* Permet de positionner la dropdown par rapport à l'élément parent */
+}
+
+.dropdown .dropdown-content{
+  display: none;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(0, 0, 0);
+  width: 160px; /* Ajuste la largeur de la dropdown */
+  box-shadow: 0 4px 8px rgba(217, 217, 217, 0.2);
+  z-index: 1;
+  top: 100%; /* Fait apparaître le dropdown juste en dessous de la navbar */
+  left: 0; /* Aligne le dropdown avec l'élément parent */
+  border-radius: 35px;
+}
+
+/* Afficher la liste lors du survol de l'élément parent */
+.dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 8px;
+}
+
+
+.dropdown-content li {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 80%;
+}
+
+.dropdown-content li a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  display: block;
+  border-radius: 35px;
+  font-size: 22px;
+}
+
+.dropdown-content li a:hover {
+  background-color: #232323;
+}
+
+
+/* Style de la flèche à côté du texte */
+.dropdown-arrow {
+  filter: invert(1);
+  width: 12px; /* Taille de l'image */
+  height: 12px;
+  margin-left: 8px; /* Espacement entre le texte et la flèche */
+  transition: transform 0.3s ease; /* Transition smooth */
+  transform-origin: center; /* Rotation autour du centre */
+}
+
+/* Rotation de la flèche au survol */
+.dropdown:hover .dropdown-arrow {
+  transform: rotate(90deg); /* Pivote de 90 degrés */
+}
+
+
+
+.navbar ul li a:hover{
+  background-color: #464646;
+}

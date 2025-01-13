@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'kayak-sans';
+    src: url('../../assets/fonts/Kayak-Sans.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'vicasso';
+    src: url('../../assets/fonts/Vicasso.ttf') format('opentype');
+}
+  
+body{
+    margin: 0;
+    background-color: #1d1d1d;
+}
+
+
+
+html, body {
+    overflow: hidden;
+}
+
+
+
+/* Thumb personnalisé */
+#scrollThumb {
+    position: fixed;
+    right: 10px;
+    top: 0;
+    width: 10px;
+    height: 50px;
+    background-color: #1a9424;
+    border-radius: 5px;
+    z-index: 9999;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    border: 1px solid #ffffff;
+}
+
+/* Changement de couleur au hover */
+#scrollThumb:hover {
+    background-color: #116017;
+}
