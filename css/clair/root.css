@@ -8,6 +8,11 @@
     src: url('../../assets/fonts/Vicasso.ttf') format('opentype');
 }
 
+@font-face {
+    font-family: 'modak';
+    src: url('../../assets/fonts/Modak-Regular.ttf') format('truetype');
+}
+
 body{
     margin: 0;
     background-color: #f1f1f1;

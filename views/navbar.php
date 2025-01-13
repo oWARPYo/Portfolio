@@ -5,7 +5,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation" id="navbar">
 
 <a href="accueil.php">
-    <img src="../assets/images/logo-black-circle.png" id="logo" alt="Logo de Jonben" title="Retourner à l'accueil">
+    <img src="../assets/images/logo.svg" id="logo" alt="Logo de Jonben" title="Retourner à l'accueil">
 </a>
 
 <ul id="navbar-ul">

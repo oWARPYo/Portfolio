@@ -4,15 +4,21 @@
     justify-content: center;
     flex-direction: column;
     padding: 26rem 0;
-    background: linear-gradient(266deg, rgba(0,171,31,1) 0%, rgba(0,120,22,1) 35%, rgba(0,63,17,1) 100%) !important;
+    background: linear-gradient(266deg, rgb(95, 32, 255) 0%, rgb(13, 0, 155) 35%, rgb(67, 133, 255) 100%) !important;
 }
 
 .gradient-section h1 {
     margin: 0 0 10px 0;
-    color: white;
-    font-family: "kayak-sans";
-    font-size: 75px;
+    font-family: "modak";
+    font-size: 150px;
+    color: transparent; /* Rendre le texte transparent */
+    -webkit-text-stroke: 0.1px white; /* Contour blanc autour des lettres */
+    text-stroke: 1px white; /* Support non standard */
+    background: linear-gradient(266deg, rgb(95, 32, 255) 0%, rgb(13, 0, 155) 35%, rgb(67, 133, 255) 100%);
+    -webkit-background-clip: text; /* Appliquer le gradient au texte */
+    background-clip: text; /* Appliquer le gradient au texte */
 }
+
 
 .gradient-section h2 {
     margin: 0;
@@ -20,6 +26,7 @@
     font-family: "kayak-sans";
     font-size: 35px;
 }
+
 
 
 #theme-toggle {

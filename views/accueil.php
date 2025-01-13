@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Jonben - Accueil </title>
+  <title> Samuel Bensoussan </title>
   <link id="theme-link-root-accueil" rel="stylesheet" href="../css/clair/root.css">
   <link id="theme-link-accueil" rel="stylesheet" href="../css/clair/accueil.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" />
-  <link rel="icon" href="../assets/images/logo-circle.png" type="image/png">
+  <link rel="icon" href="../assets/images/logo.svg" type="image/png">
   <script src="../js/main.js"></script>
 </head>
 <body>
@@ -19,17 +19,18 @@
 
   <section class="gradient-section" id="gradient">
       <h1>
-        Bienvenue sur le site de Jonben
+        Samuel Bensoussan
       </h1>
       <h2>
-        Nous offrons des conseils dans le domaine de l'énergie
+        Étudiant en informatique à la recherche <br>
+        d'une école d'ingénieur en alternance
       </h2>
   </section>
 
   <section class="lightbulb-section">
     <div class="lightbulb-div">
 
-      <img data-aos="fade-up" data-aos-duration="300" data-aos-delay="100" src="../assets/images/green-energy-lightbulb.jpg" alt="Image ampoule énergie verte" class="lightbulb-img image-fixe" id="lightbulb-img">
+      <img data-aos="fade-up" data-aos-duration="300" data-aos-delay="100" src="../assets/images/logo.svg" alt="Image ampoule énergie verte" class="lightbulb-img" id="lightbulb-img">
     
         <div class="discover-card" data-aos="fade-up" data-aos-duration="750">
 
