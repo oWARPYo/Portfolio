@@ -1,3 +1,14 @@
+window.addEventListener('load', function() {
+    const loader = document.getElementById('loader');
+    loader.classList.add('hidden'); // Ajoute une classe pour masquer le loader
+  });
+
+
+  
+//----------------------------------------------------------------------------------------------------------------------------
+
+
+
 function toggleTheme() {
     // Récupérer l'élément <link> du thème
     const themeIcon = document.getElementById('theme-icon');
@@ -69,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isScrolling) return;
         const currentScroll = window.scrollY;
         const distance = targetScrollPosition - currentScroll;
-        window.scrollTo(0, currentScroll + distance * 0.1); // Ajuste la vitesse avec un multiplicateur
+        window.scrollTo(0, currentScroll + distance * 0.01); // Ajuste la vitesse avec un multiplicateur
 
         if (Math.abs(distance) > 0.5) {
             requestAnimationFrame(smoothScroll);
@@ -93,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Gère le glissement du thumb
     scrollThumb.addEventListener('mousedown', (event) => {
-        scrollThumb.style.backgroundColor = '#116017'
+        scrollThumb.style.backgroundColor = '#000eac'
         isDragging = true;
         startY = event.clientY;
         startScrollY = window.scrollY;
@@ -112,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.addEventListener('mouseup', () => {
-        scrollThumb.style.backgroundColor = '#1a9424'
+        scrollThumb.style.backgroundColor = '#0077ff'
         isDragging = false;
         document.body.style.userSelect = '';
         targetScrollPosition = window.scrollY; // Fixe la position cible après le glissement du thumb
@@ -172,7 +183,32 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', showThumb);
 
 
+
+    // Gestion du scroll fluide pour les ancres (par exemple, "Profil")
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault(); // Empêche le comportement par défaut du lien
+
+            const targetId = this.getAttribute('href').slice(1); // Récupère l'ID sans le '#'
+            console.log(targetId)
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetScrollPosition = targetElement.offsetTop; // Position cible basée sur l'élément cible
+                isScrolling = true; // Démarre le scroll fluide
+                smoothScroll(); // Appelle votre fonction de défilement fluide
+            }
+        });
+    })
+
+
     
 });
 
-  
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------
+
